@@ -19,13 +19,13 @@ Modificar el frontend (puerto 8080) y simular que hace una llamada a un recurso 
 2. Verificar Endpoints	
     * Comprueba que ambos servicios estén accesibles.	
 
-     *** Navegador: http://localhost:8080 (Frontend) ***
-     *** Navegador: http://localhost:3000 (Backend) ***
+     ** Navegador: http://localhost:8080 (Frontend) **
+     ** Navegador: http://localhost:3000 (Backend) **
 
 3. Modificación del Backend (Simulación de API)
 El servicio de backend usará Node.js para servir datos en formato JSON, imitando una API.
 
-* 1. Modificar backend/server.js: Reemplaza el contenido del archivo backend/server.js para que responda con datos estructurados y establezca las cabeceras de Content-Type:
+    1. Modificar backend/server.js: Reemplaza el contenido del archivo backend/server.js para que responda con datos estructurados y establezca las cabeceras de Content-Type:
 
 ```JavaScript
 
@@ -57,20 +57,19 @@ server.listen(port, (err) => {
   console.log(`Servidor Node.js escuchando en el puerto ${port}`);
 });
 ```
-* 2. Reiniciar el Contenedor de Backend: Como hemos cambiado código de Node.js que no soporta hot-reload automáticamente, debemos reiniciar el servicio para aplicar los cambios:
+   2. Reiniciar el Contenedor de Backend: Como hemos cambiado código de Node.js que no soporta hot-reload automáticamente, debemos reiniciar el servicio para aplicar los cambios:
 
 ```Bash
-
 docker compose restart backend
 ```
 
-* 3. Verificación del Backend: 
+   3. Verificación del Backend: 
    Abre http://localhost:3000 en tu navegador. Ahora debería mostrar un JSON formateado.
 
 3. Modificación del Frontend (Consumo de la API)
 El servicio de frontend (Nginx) está montado a la carpeta frontend/. Cualquier cambio en index.html se reflejará inmediatamente al recargar el navegador.
 
-* 1. Modificar frontend/index.html: Añade el siguiente bloque de JavaScript al final del <body> del archivo frontend/index.html. Este código llama a nuestro backend en http://localhost:3000.
+* Modificar frontend/index.html: Añade el siguiente bloque de JavaScript al final del <body> del archivo frontend/index.html. Este código llama a nuestro backend en http://localhost:3000.
 
 ```HTML
 
@@ -96,9 +95,9 @@ El servicio de frontend (Nginx) está montado a la carpeta frontend/. Cualquier 
 ```
 
 4. Prueba Final (Integración de Servicios)
-* 1. Recargar Frontend: Vuelve a http://localhost:8080 y recarga la página.
+   1. Recargar Frontend: Vuelve a http://localhost:8080 y recarga la página.
 
-* 2. Resultado Esperado: La página debe mostrar los datos del mensaje de Backend (ej: Mensaje: ¡Datos recibidos desde el Backend!).
+   2. Resultado Esperado: La página debe mostrar los datos del mensaje de Backend (ej: Mensaje: ¡Datos recibidos desde el Backend!).
 
 Este proceso simula un flujo real: desarrollas el backend, lo despliegas (simulado con el reinicio), desarrollas el frontend y verificas la integración de ambos servicios interconectados dentro de la red Docker.
 
