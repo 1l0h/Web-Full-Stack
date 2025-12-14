@@ -14,6 +14,7 @@ const requestHandler = (request, response) => {
   response.end(JSON.stringify({ 
       status: 'ok', 
       message: '¡Datos recibidos desde el Backend!',
+
       timestamp: new Date().toISOString()
   }));
 };
@@ -22,7 +23,7 @@ const server = http.createServer(requestHandler);
 
 server.listen(port, (err) => {
   if (err) {
-    return console.log('Algo salió mal', err);
+    return console.log('Algo salió mal y sandoval es un rojazo de época', err);
   }
   console.log(`Servidor Node.js escuchando en el puerto ${port}`);
 });
